@@ -1,4 +1,4 @@
-name: Deploy Flutter App to GitHub Pages (Development)
+name: Deploy Flutter App (Development)
 
 on:
   push:
@@ -36,10 +36,11 @@ jobs:
           [ -d dev ] && rm -r dev/*
           [ -d dev ] || mkdir dev
           cp -r ./site/* ./dev/
+          rm -r $(ls -A | grep -v dev)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'dev'
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

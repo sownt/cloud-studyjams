@@ -1,4 +1,4 @@
-name: Deploy Flutter App to GitHub Pages
+name: Deploy Flutter App
 
 on:
   push:
