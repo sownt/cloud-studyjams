@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Cloud Skills Boost Profile Validator',
+      title: 'Profile Validator for Cloud Skills Boost',
       theme: ThemeData(
         // This is the theme of your application.
         //

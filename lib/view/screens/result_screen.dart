@@ -62,7 +62,7 @@ class _ResultScreenState extends State<ResultScreen> {
             }
           }
           final tier1 = count >= 7 && skill >= 3;
-          final tier2 = count >= 14 && skill >= 7;
+          final tier2 = count >= 14 && skill >= 6;
           return Center(
             child: Container(
               constraints: const BoxConstraints(maxWidth: 768),

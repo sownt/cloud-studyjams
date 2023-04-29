@@ -37142,7 +37142,7 @@ if(((p>=208?k.d=A.aiz(r,s,q,p):p)&1)===0)return k.c
 return-1}}
 A.hN.prototype={}
 A.Fj.prototype={
-W(a){return new A.u8("/home","Cloud Skills Boost Profile Validator",A.amr(null,B.fF,null),!1,$.apP(),null)}}
+W(a){return new A.u8("/home","Profile Validator for Cloud Skills Boost",A.amr(null,B.fF,null),!1,$.apP(),null)}}
 A.a34.prototype={
 $0(){return B.zF},
 $S:155}
@@ -37259,7 +37259,7 @@ if(f!=null){for(s=J.aE(f),r=0,q=0,p=0,o=0;o<s.gn(f);++o){n=s.j(f,o)
 m=n.b.a
 if(m>$.aiW().a&&m<$.aiV().a){m=n.a
 if(B.b.t($.agI,m)){++p;++r}else if(B.b.t($.akF,m)){++p;++q}}}l=p>=7&&r>=3
-k=p>=14&&r>=7
+k=p>=14&&r>=6
 m=A.fP("Total: "+p+"\tSkill Badges: "+r+"\tRegular Badges: "+q,B.MK,g,g)
 s=A.auM(new A.acq(f),s.gn(f),new A.acr(),!0)
 j=A.akN(B.lW,l&&!k?B.fE:B.fD)
