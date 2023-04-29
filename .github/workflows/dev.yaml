@@ -1,8 +1,8 @@
-name: Deploy Flutter App to GitHub Pages
+name: Deploy Flutter App (Development)
 
 on:
   push:
-    branches: ["main"]
+    branches: ["dev"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,19 +23,24 @@ jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: dev
+      url: ${{ steps.deployment.outputs.page_url }}dev/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: Create Development env
+        run: |
+          [ -d dev ] && rm -r dev/*
+          [ -d dev ] || mkdir dev
+          cp -r ./site/* ./dev/
+          rm -r $(ls -A | grep -v dev)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
-          path: './site/'
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
