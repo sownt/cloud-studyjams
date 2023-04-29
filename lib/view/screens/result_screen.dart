@@ -171,8 +171,10 @@ class _ResultScreenState extends State<ResultScreen> {
         final name =
             e.getElementsByClassName('ql-subhead-1 l-mts')[0].text.trim();
         final date = e.getElementsByClassName('ql-body-2 l-mbs')[0].text.trim();
+        var end = date.indexOf(' EDT');
+        if (end == -1) end = date.indexOf(' EST');
         final sub = date
-            .substring(7, date.indexOf(' EDT'))
+            .substring(7, end)
             .replaceAll(RegExp(' +'), ' ');
         final datetime = DateFormat('MMM d, yyyy').parse(sub);
         return Badge(name: name, earned: datetime);
