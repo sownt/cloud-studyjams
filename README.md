@@ -1,6 +1,4 @@
-# cloudskillsboost_profile_validator
-
-Cloud Skills Boost Profile Validator
+# Cloud Skills Boost Profile Validator
 
 ## Getting Started
 
