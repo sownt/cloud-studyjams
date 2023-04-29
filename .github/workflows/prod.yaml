@@ -1,4 +1,4 @@
-name: Deploy Flutter App
+name: Deploy Flutter App (Production)
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
-      name: prod
+      name: frontend-prod
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:

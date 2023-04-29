@@ -23,7 +23,7 @@ jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
-      name: dev
+      name: frontend-dev
       url: ${{ steps.deployment.outputs.page_url }}dev/
     runs-on: ubuntu-latest
     steps:
