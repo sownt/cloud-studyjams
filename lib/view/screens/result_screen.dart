@@ -63,90 +63,92 @@ class _ResultScreenState extends State<ResultScreen> {
           }
           final tier1 = count >= 7 && skill >= 3;
           final tier2 = count >= 14 && skill >= 6;
-          return Center(
-            child: Container(
-              constraints: const BoxConstraints(maxWidth: 768),
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                children: [
-                  Text(
-                    'Total: $count\tSkill Badges: $skill\tRegular Badges: $regular',
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 32),
-                  ListView.separated(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final item = response[index];
-                      if ((GCP5.skill.contains(item.name) ||
-                              GCP5.regular.contains(item.name)) &&
-                          (item.earned.isAfter(GCP5.start) &&
-                              item.earned.isBefore(GCP5.end))) {
-                        return Row(
-                          children: [
-                            Text(item.name),
-                            const SizedBox(width: 8),
-                            const Icon(
-                              Icons.check,
-                              color: Colors.green,
-                            ),
-                            const SizedBox(width: 8),
-                            Text(GCP5.skill.contains(item.name)
-                                ? 'Skill'
-                                : 'Regular')
-                          ],
-                        );
-                      } else {
-                        return Row(
-                          children: [
-                            Text(item.name),
-                            const SizedBox(width: 8),
-                            const Icon(
-                              Icons.clear,
-                              color: Colors.red,
-                            ),
-                          ],
-                        );
-                      }
-                    },
-                    separatorBuilder: (context, index) => const Divider(),
-                    itemCount: response.length,
-                  ),
-                  const SizedBox(height: 32),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.check_circle,
-                        color: (tier1 && !tier2) ? Colors.green : Colors.grey,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'Tier 1'.tr,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(width: 32),
-                      Icon(
-                        Icons.check_circle,
-                        color: tier2 ? Colors.green : Colors.grey,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'Tier 2'.tr,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  )
-                ],
+          return SingleChildScrollView(
+            child: Center(
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 768),
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  children: [
+                    Text(
+                      'Total: $count\tSkill Badges: $skill\tRegular Badges: $regular',
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 32),
+                    ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        final item = response[index];
+                        if ((GCP5.skill.contains(item.name) ||
+                            GCP5.regular.contains(item.name)) &&
+                            (item.earned.isAfter(GCP5.start) &&
+                                item.earned.isBefore(GCP5.end))) {
+                          return Row(
+                            children: [
+                              Text(item.name),
+                              const SizedBox(width: 8),
+                              const Icon(
+                                Icons.check,
+                                color: Colors.green,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(GCP5.skill.contains(item.name)
+                                  ? 'Skill'
+                                  : 'Regular')
+                            ],
+                          );
+                        } else {
+                          return Row(
+                            children: [
+                              Text(item.name),
+                              const SizedBox(width: 8),
+                              const Icon(
+                                Icons.clear,
+                                color: Colors.red,
+                              ),
+                            ],
+                          );
+                        }
+                      },
+                      separatorBuilder: (context, index) => const Divider(),
+                      itemCount: response.length,
+                    ),
+                    const SizedBox(height: 32),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.check_circle,
+                          color: (tier1 && !tier2) ? Colors.green : Colors.grey,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Tier 1'.tr,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 32),
+                        Icon(
+                          Icons.check_circle,
+                          color: tier2 ? Colors.green : Colors.grey,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Tier 2'.tr,
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           );
