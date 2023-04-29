@@ -41,7 +41,6 @@ dependencies:
   intl: ^0.18.1
   rive: ^0.10.4
   file_picker: ^5.2.11
-  url_strategy: ^0.2.0
 
 dev_dependencies:
   flutter_test:
