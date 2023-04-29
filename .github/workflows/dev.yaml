@@ -24,7 +24,7 @@ jobs:
   deploy:
     environment:
       name: dev
-      url: ${{ steps.deployment.outputs.page_url }}/dev
+      url: ${{ steps.deployment.outputs.page_url }}dev
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
