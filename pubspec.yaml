@@ -39,7 +39,6 @@ dependencies:
   html: ^0.15.2
   http: ^0.13.5
   intl: ^0.18.1
-  firebase_core: ^2.10.0
   rive: ^0.10.4
   file_picker: ^5.2.11
 
