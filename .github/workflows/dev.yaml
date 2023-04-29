@@ -24,7 +24,7 @@ jobs:
   deploy:
     environment:
       name: dev
-      url: ${{ steps.deployment.outputs.page_url }}dev
+      url: ${{ steps.deployment.outputs.page_url }}dev/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,8 +39,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
-          path: './dev'
+          path: 'dev'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
