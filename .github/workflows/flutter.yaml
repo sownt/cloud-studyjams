@@ -39,3 +39,5 @@ jobs:
         run: flutter test
       - name: Build for web
         run: flutter build web
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
