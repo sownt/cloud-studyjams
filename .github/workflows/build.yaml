@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build, test and analyst
 
 on:
   push:
@@ -24,9 +24,10 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
+  build:
+    name: Build and run tests
     environment:
-      name: Flutter Web
+      name: Flutter Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
