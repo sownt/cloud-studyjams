@@ -1,7 +1,10 @@
-name: Build Flutter
+name: Build and Test
 
 on:
   push:
+    branches: ["main"]
+
+  pull_request:
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -23,7 +26,7 @@ jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
-      name: Flutter App
+      name: Flutter Web
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
