@@ -4,6 +4,7 @@ import 'package:flutter/material.dart' hide Badge;
 import 'package:get/get.dart';
 import 'package:html/parser.dart' as parser;
 import 'package:intl/intl.dart';
+import 'package:rive/rive.dart';
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({super.key});
@@ -18,7 +19,12 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   void initState() {
     super.initState();
-    profile = Get.arguments as String;
+    try {
+      profile = Get.arguments as String;
+    } catch (e) {
+      profile = '';
+      Get.back();
+    }
   }
 
   @override
@@ -83,7 +89,7 @@ class _ResultScreenState extends State<ResultScreen> {
                       itemBuilder: (context, index) {
                         final item = response[index];
                         if ((GCP5.skill.contains(item.name) ||
-                            GCP5.regular.contains(item.name)) &&
+                                GCP5.regular.contains(item.name)) &&
                             (item.earned.isAfter(GCP5.start) &&
                                 item.earned.isBefore(GCP5.end))) {
                           return Row(
@@ -159,6 +165,14 @@ class _ResultScreenState extends State<ResultScreen> {
         }
         return const Center(
           child: CircularProgressIndicator(),
+          // child: SizedBox(
+          //   width: 120,
+          //   height: 120,
+          //   child: RiveAnimation.asset(
+          //     'assets/rives/liquid_download.riv',
+          //     stateMachines: ['Complete'],
+          //   ),
+          // ),
         );
       },
       future: fetch(profile),
@@ -175,9 +189,7 @@ class _ResultScreenState extends State<ResultScreen> {
         final date = e.getElementsByClassName('ql-body-2 l-mbs')[0].text.trim();
         var end = date.indexOf(' EDT');
         if (end == -1) end = date.indexOf(' EST');
-        final sub = date
-            .substring(7, end)
-            .replaceAll(RegExp(' +'), ' ');
+        final sub = date.substring(7, end).replaceAll(RegExp(' +'), ' ');
         final datetime = DateFormat('MMM d, yyyy').parse(sub);
         return Badge(name: name, earned: datetime);
       });
